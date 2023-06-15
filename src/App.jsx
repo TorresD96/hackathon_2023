@@ -7,7 +7,7 @@ function App() {
   useEffect(() => {
     
 
-    fetch('https://api.sheety.co/f3d41739f79e26e0bcca4c9d027df686/sivigilaRutinaria/cie10')
+    fetch('https://app.powerbi.com/view?r=eyJrIjoiMDUyYWJhZjUtYWNmZi00ODU1LWFhMWMtMDE1OTgyNjg2YTViIiwidCI6IjU3N2ZjMWQ4LTA5MjItNDU4ZS04N2JmLWVjNGY0NTVlYjYwMCIsImMiOjR9')
       .then((response) => { return response.json()})
       .then((enfermedades) => {
 
