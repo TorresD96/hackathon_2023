@@ -1,28 +1,27 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState, useEffect } from 'react';
+import './App.css';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [enfermedades, setEnfermedades] = useState([]);
 
-  return (
-    <>
-      
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+  useEffect(() => {
+    fetch('https://api.sheety.co/f3d41739f79e26e0bcca4c9d027df686/sivigilaRutinaria/cie10')
+      .then((response) => { return response.json()})
+      .then((enfermedades) => {
+        console.log(enfermedades);
+        setEnfermedades(enfermedades);
+      });
+  }, []);
+
+   return (
+    <div>
+      <ul>
+        {enfermedades.map((item) => (
+          <li key={item.id}>{item.capitulo}</li>
+        ))}
+      </ul>
+    </div>
+  );
 }
 
-export default App
+export default App;
